@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <title>ग्रामपंचायत सजनपुरी</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: "Noto Sans Devanagari", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(-45deg, #87CEFA, #FFB6C1);
+      padding: 25px;
+      text-align: center;
+      color: #fff;
+    }
+    .main-title {
+      font-size: 42px;
+      font-weight: bold;
+      margin: 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+      animation: fadeInDown 1.2s ease;
+    }
+    .sub-title {
+      font-size: 22px;
+      margin-top: 6px;
+      text-shadow: 1px 1px 6px #000;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    /* Navbar */
+    nav {
+      background: #fff;
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    nav a {
+      text-decoration: none;
+      margin: 0 8px;
+      padding: 10px 16px;
+      border-radius: 25px;
+      font-weight: bold;
+      color: #0D47A1;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    nav a:hover {
+      background: #e3f2fd;
+      color: #0a3378;
+      transform: translateY(-2px);
+    }
+    nav a.active {
+      background: #4CAF50;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+      gap: 20px;
+    }
+    .welcome {
+      flex: 1 1 55%;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: fadeInLeft 1s ease;
+    }
+    .welcome h3 { margin-top: 0; color:#0D47A1; }
+
+    .image-box {
+      flex: 1 1 40%;
+      text-align: center;
+      animation: fadeInRight 1s ease;
+    }
+
+    /* Slider */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .slides img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: none;
+      border-radius: 10px;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      bottom: 10px;
+      padding: 8px 12px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      transition: background 0.3s;
+    }
+    .prev { left: 20px; }
+    .next { right: 20px; }
+    .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+
+    .dots { text-align: center; margin-top: 10px; }
+    .dot { height: 12px; width: 12px; margin: 0 3px; background: #bbb; border-radius: 50%; display: inline-block; cursor: pointer; }
+    .active { background: #2196F3; }
+    .caption {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 8px;
+      color: #444;
+      background: #fff59d;
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Population */
+    .population { margin-top: 15px; }
+    .population h4 {
+      font-size: 22px;
+      font-weight: bold;
+      color: #0D47A1;
+      border-bottom: 3px solid #ff9800;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .population table {
+      width: 100%;
+      max-width: 400px;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .population th, .population td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    .population th { background: #e3f2fd; }
+    .population td { font-weight: bold; }
+
+    /* Content Section */
+    .content-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+    .team, .map-section, .notice {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease;
+    }
+    .team h3, .map-section h2, .notice h3 { text-align: center; margin-bottom: 15px; color: #0D47A1; }
+
+    /* 🔹 Team Section - Even Smaller */
+    .team-members {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 8px;  /* gap aur kam */
+    }
+
+    .member {
+      background: #e3f2fd;
+      padding: 4px;      /* padding aur kam */
+      width: 70px;       /* aur chhota width */
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .member img {
+      width: 45px;       /* image chhoti */
+      height: 45px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 4px;
+      display: block;
+      border: 2px solid #2196F3;
+    }
+
+    .member p {
+      font-size: 9px;    /* text aur chhota */
+      line-height: 1.1;
+      margin: 0;
+      color: #0D47A1;
+    }
+
+    .member:hover { 
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .map-section iframe { width: 100%; height: 250px; border: 0; border-radius: 6px; }
+
+    .notice-box {
+      height: 200px;
+      overflow: hidden;
+      background: #fffde7;
+      border: 2px solid #ff9800;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    .notice-box ul { list-style: none; padding: 0; margin: 0; animation: scrollUp 6s linear infinite; }
+    .notice-box ul:hover { animation-play-state: paused; }
+    .notice-box li { margin-bottom: 10px; font-weight: bold; }
+
+    /* Footer */
+    footer {
+      background: #0D47A1;
+      color: #fff;
+      text-align: center;
+      padding: 12px 0;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    /* Animations */
+    @keyframes scrollUp { 0% { transform: translateY(100%);} 100% { transform: translateY(-100%);} }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px);} to { opacity: 1; transform: translateY(0);} }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+    @keyframes fadeInLeft { from { opacity:0; transform:translateX(-30px);} to {opacity:1; transform:translateX(0);} }
+    @keyframes fadeInRight { from { opacity:0; transform:translateX(30px);} to {opacity:1; transform:translateX(0);} }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .content-section { grid-template-columns: 1fr; }
+      .container { flex-direction: column; }
+      .welcome, .image-box { flex: 1 1 100%; }
+      .team-members { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 class="main-title">ग्रामपंचायत सजनपुरी</h1>
+  <h2 class="sub-title">तालुका खामगांव जिल्हा बुलडाणा</h2>
+</header>
+
+<nav>
+  <a href="index.html" class="active"><i class="fas fa-home"></i> मुख्यपृष्ठ</a>
+  <a href="about.html"><i class="fas fa-info-circle"></i> आमच्याबद्दल</a>
+  <a href="sangh.html"><i class="fas fa-users"></i> संघटना</a>
+  <a href="seva.html"><i class="fas fa-hand-holding-heart"></i> सेवा</a>
+  <a href="yojana.html"><i class="fas fa-lightbulb"></i> योजना</a>
+  <a href="gallery.html"><i class="fas fa-image"></i> गॅलरी</a>
+  <a href="contact.html"><i class="fas fa-phone"></i> संपर्क</a>
+</nav>
+
+<div class="container">
+  <div class="welcome">
+    <h3>ग्रामपंचायत सजनपुरी मध्ये आपला स्वागत आहे</h3>
+    <p>ग्रामपंचायत कार्यालय सजनपुरी मध्ये आपले मनःपूर्वक स्वागत. या पोर्टल वर ग्रामपंचायतीतील नागरिकांना सर्व सुविधा उपलब्ध होतील. सूचनांमध्ये व गावातील कार्यक्रम बदलाची माहिती मिळेल.</p>
+
+    <div class="population">
+      <h4>लोकसंख्या</h4>
+      <table>
+        <tr>
+          <th><img src="images/total.png" style="width:25px;"> एकूण लोकसंख्या</th>
+          <th><img src="images/man.png" style="width:25px;"> पुरुष</th>
+          <th><img src="images/woman.png" style="width:25px;"> महिला</th>
+        </tr>
+        <tr>
+          <td>5000</td>
+          <td>3000</td>
+          <td>2000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="image-box">
+    <div class="slider">
+      <div class="slides">
+        <img src="images/sajanpuri1.jpg" alt="ग्रामपंचायत भवन">
+        <img src="images/sajanpuri2.jpg" alt="ग्रामपंचायत भवन">
+        <img src="images/sajanpuri3.jpg" alt="ग्रामपंचायत भवन">
+        <img src="images/sajanpuri4.jpg" alt="ग्रामपंचायत भवन">
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+    <p class="caption">ग्रामपंचायत भवन</p>
+  </div>
+</div>
+
+<div class="content-section">
+  <div class="team">
+    <h3>ग्रामपंचायत मंडळ</h3>
+    <div class="team-members">
+      <div class="member">
+        <img src="images/photo1.jpg" alt="सरपंच">
+        <p>सरपंच<br>mob: 1234567890</p>
+      </div>
+      <div class="member">
+        <img src="images/photo2.jpg" alt="उपसरपंच">
+        <p>उपसरपंच<br>mob: 1234567890</p>
+      </div>
+      <div class="member">
+        <img src="images/photo3.jpg" alt="सचिव">
+        <p>सचिव<br>mob: 1234567890</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-section">
+    <h2>गावाचा नकाशा</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.664563948903!2d77.123456789!3d20.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd123456789abcd%3A0xabcdef123456789!2sSajanpuri%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1723456789012!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <div class="notice">
+    <h3>सूचना</h3>
+    <div class="notice-box">
+      <ul>
+        <li>१६ ऑगस्ट ला सुटी राहील</li>
+        <li>सकाळी १० वाजता ग्रामसभा आहे</li>
+        <li>नवीन योजना सुरु करण्यात आली आहे</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Gramin Seva | By Firoz Shaikh</p>
+</footer>
+
+<script>
+let slideIndex = 1;
+let timer;
+showSlides(slideIndex);
+function plusSlides(n){ clearTimeout(timer); showSlides(slideIndex += n);}
+function currentSlide(n){ clearTimeout(timer); showSlides(slideIndex = n);}
+function showSlides(n){
+  let i;
+  let slides=document.querySelectorAll(".slides img");
+  let dots=document.querySelectorAll(".dot");
+  if(n>slides.length){slideIndex=1}
+  if(n<1){slideIndex=slides.length}
+  for(i=0;i<slides.length;i++){slides[i].style.display="none";}
+  for(i=0;i<dots.length;i++){dots[i].classList.remove("active");}
+  slides[slideIndex-1].style.display="block";
+  dots[slideIndex-1].classList.add("active");
+  timer=setTimeout(()=>showSlides(slideIndex+=1),4000);
+}
+</script>
+
+</body>
+</html>
+/* ===== Gallery Fix ===== */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* 👇 MOST IMPORTANT PART */
+.card img {
+  width: 100%;
+  height: 220px;        /* sab photo same height */
+  object-fit: cover;   /* photo stretch nahi hogi */
+  display: block;
+}
+
+.card-info {
+  padding: 12px;
+  background: #f4f4f4;
+  text-align: center;
+  font-weight: 600;
+  border-top: 1px solid #ddd;
+}
+/* ===== FORCE GALLERY FIX ===== */
+
+.gallery {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 30px !important;
+}
+
+.gallery .card {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.gallery .card img {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.gallery .card-info {
+  background: #f4f4f4 !important;
+  padding: 12px !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+}
