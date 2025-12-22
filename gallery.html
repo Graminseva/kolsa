@@ -1,136 +1,194 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <title>गरामपंचायत कोळसा - गॅलरी</title>
+<meta charset="UTF-8">
+<title>गरामपंचायत कोळसा - गॅलरी</title>
 
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* Navbar fix */
+nav{ position:relative; z-index:10; }
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+.card{
+  background:#fff;
+  padding:8px;
+  border-radius:8px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  cursor:pointer;
+}
+.card img{ width:100%; border-radius:6px; }
+.caption{
+  margin-top:6px;
+  font-size:14px;
+  font-weight:600;
+}
+
+/* Lightbox */
+.lightbox{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  left:0; top:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+  text-align:center;
+}
+.lightbox-img{
+  margin-top:80px;
+  max-width:90%;
+  max-height:80%;
+  border-radius:8px;
+}
+.lightbox-caption{
+  color:#fff;
+  margin-top:10px;
+  font-size:18px;
+}
+.close{
+  position:absolute;
+  top:15px;
+  right:30px;
+  color:#fff;
+  font-size:35px;
+  cursor:pointer;
+}
+
+/* Arrows */
+.prev,.next{
+  position:absolute;
+  top:50%;
+  font-size:40px;
+  color:#fff;
+  cursor:pointer;
+  padding:10px;
+  user-select:none;
+}
+.prev{ left:20px; }
+.next{ right:20px; }
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1 class="main-title">ग्रामपंचायत कोळसा</h1>
-    <h2 class="sub-title">तालुका सेनगाव  जिल्हा हिगोली</h2>
-  </header>
+<header>
+<h1>ग्रामपंचायत कोळसा</h1>
+<h2>तालुका सेनगाव जिल्हा हिंगोली</h2>
+</header>
 
-  <nav>
-    <a href="index.html">मुख्यपृष्ठ</a>
-    <a href="about.html">आमच्याबद्दल</a>
-    <a href="sangh.html">संघटना</a>
-    <a href="seva.html">सेवा</a>
-    <a href="yojana.html">योजना</a>
-    <a href="gallery.html" class="active">गॅलरी</a>
-    <a href="contact.html">संपर्क</a>
-  </nav>
+<nav>
+<a href="index.html">मुख्यपृष्ठ</a>
+<a href="about.html">आमच्याबद्दल</a>
+<a href="sangh.html">संघटना</a>
+<a href="seva.html">सेवा</a>
+<a href="yojana.html">योजना</a>
+<a href="gallery.html" class="active">गॅलरी</a>
+<a href="contact.html">संपर्क</a>
+</nav>
 
-  <div class="content">
+<div class="content">
+<h3 style="text-align:center;">गॅलरी</h3>
 
-    <h3 style="text-align:center;">गॅलरी</h3>
+<div class="gallery">
+<!-- 1 to 30 -->
+<div class="card"><img src="photo1.jpg" alt="ग्रामपंचायत कार्यालय"><p class="caption">ग्रामपंचायत कार्यालय</p></div>
+<div class="card"><img src="photo2.jpg" alt="वॉर्ड आरोग्य केंद्र"><p class="caption">वॉर्ड आरोग्य केंद्र</p></div>
+<div class="card"><img src="photo3.jpg" alt="आयुष्मान भारत केंद्र"><p class="caption">आयुष्मान भारत केंद्र</p></div>
+<div class="card"><img src="photo4.jpg" alt="अंगणवाडी केंद्र"><p class="caption">अंगणवाडी केंद्र</p></div>
+<div class="card"><img src="photo5.jpg" alt="ग्रामसभा कार्यक्रम"><p class="caption">ग्रामसभा कार्यक्रम</p></div>
+<div class="card"><img src="photo6.jpg" alt="संगणक कक्ष"><p class="caption">संगणक कक्ष</p></div>
+<div class="card"><img src="photo7.jpg" alt="जि.प. शाळा"><p class="caption">जि.प. शाळा</p></div>
+<div class="card"><img src="photo8.jpg" alt="जि.प.शाळा डिजिटल साहित्य वाटप"><p class="caption">जि.प.शाळा डिजिटल साहित्य वाटप</p></div>
+<div class="card"><img src="photo9.jpg" alt="अंगणवाडी क्र 1 रंग रंगोटी"><p class="caption">अंगणवाडी क्र 1 रंग रंगोटी</p></div>
+<div class="card"><img src="photo10.jpg" alt="अंगणवाडी क्र 2"><p class="caption">अंगणवाडी क्र 2</p></div>
+<div class="card"><img src="photo11.jpg" alt="गावातील गट्टू रस्ते"><p class="caption">गावातील गट्टू रस्ते</p></div>
+<div class="card"><img src="photo12.jpg" alt="गावातील गट्टू रस्ते"><p class="caption">गावातील गट्टू रस्ते</p></div>
+<div class="card"><img src="photo13.jpg" alt="मागासवर्गीय रस्ता "><p class="caption">मागासवर्गीय रस्ता</p></div>
+<div class="card"><img src="photo14.jpg" alt="दलीत वस्ती रस्ता"><p class="caption">दलीत वस्ती रस्ता</p></div>
+<div class="card"><img src="photo15.jpg" alt="दिवा बत्ती हयमस्ट व गट्टू रस्ता "><p class="caption">दिवा बत्ती हयमस्ट व गट्टू रस्ता</p></div>
+<div class="card"><img src="photo16.jpg" alt="अंगणवाडी ला गस व भटा"><p class="caption">अंगणवाडी ला गस व भटा</p></div>
+<div class="card"><img src="photo17.jpg" alt="नाली सफाई"><p class="caption">नाली सफाई</p></div>
+<div class="card"><img src="photo18.jpg" alt="शोष खड्डे बांधकाम"><p class="caption">शोष खड्डे बांधकाम</p></div>
+<div class="card"><img src="photo19.jpg" alt="सार्वजनिक विहीर खोदकाम"><p class="caption">गसार्वजनिक विहीर खोदकाम</p></div>
+<div class="card"><img src="photo20.jpg" alt="अधिकारी ,सरपंच,ई. झाडे लावताना "><p class="caption">अधिकारी ,सरपंच,ई. झाडे लावताना</p></div>
+<div class="card"><img src="photo21.jpg" alt="अधिकारी ,सरपंच,ई. झाडे लावताना"><p class="caption">अधिकारी ,सरपंच,ई. झाडे लावताना</p></div>
+<div class="card"><img src="photo22.jpg" alt="गावातील सर्व घरावर नावे घर क्रमांक"><p class="caption">गावातील सर्व घरावर नावे घर क्रमांक</p></div>
+<div class="card"><img src="photo23.jpg" alt="शादिखाना "><p class="caption">शादिखाना</p></div>
+<div class="card"><img src="photo24.jpg" alt="जिजाऊ माहेर घर "><p class="caption">जिजाऊ माहेर घर</p></div>
+<div class="card"><img src="photo25.jpg" alt="आरोग्य उपकेंद्र"><p class="caption">आरोग्य उपकेंद्र</p></div>
+<div class="card"><img src="photo26.jpg" alt="covid 19 निर्जुतीक्रण फवारणी "><p class="caption">covid 19 निर्जुतीक्रण फवारणी </p></div>
+<div class="card"><img src="photo27.jpg" alt="छत्रपती शिवाजी महाराज आणि संत गाडगे महाराज जयंती साजरी "><p class="caption">छत्रपती शिवाजी महाराज आणि संत गाडगे महाराज जयंती साजरी</p></div>
+<div class="card"><img src="photo28.jpg" alt="सर्व जयंती साजरी करताना"><p class="caption">सर्व जयंती साजरी करताना</p></div>
+<div class="card"><img src="photo29.jpg" alt="श्री हनुमान मंदिर"><p class="caption">श्री हनुमान मंदिर</p></div>
+<div class="card"><img src="photo30.jpg" alt="श्री गजानन महाराज मंदिर "><p class="caption">श्री गजानन महाराज मंदिर</p></div>
+</div>
+</div>
 
-    <!-- ===== Gallery Start ===== -->
-    <div class="gallery">
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+<span class="close">&times;</span>
+<span class="prev">&#10094;</span>
+<span class="next">&#10095;</span>
+<img class="lightbox-img" id="lbImg">
+<p class="lightbox-caption" id="lbCap"></p>
+</div>
 
-      <div class="card">
-        <img src="photo1.jpg" alt="ग्रामपंचायत कार्यालय">
-      </div>
+<script>
+const imgs=[...document.querySelectorAll(".gallery img")];
+let index=0;
+const lb=document.getElementById("lightbox");
+const lbImg=document.getElementById("lbImg");
+const lbCap=document.getElementById("lbCap");
+const nav=document.querySelector("nav");
 
-      <div class="card">
-        <img src="photo2.jpg" alt="वॉर्ड आरोग्य केंद्र">
-      </div>
+function openLB(i){
+ index=i;
+ lb.style.display="block";
+ lbImg.src=imgs[i].src;
+ lbCap.innerText=imgs[i].alt;
+ nav.style.display="none";
+}
+imgs.forEach((img,i)=>img.onclick=()=>openLB(i));
 
-      <div class="card">
-        <img src="photo3.jpg" alt="आयुष्मान भारत केंद्र">
-      </div>
+function show(n){
+ index=(n+imgs.length)%imgs.length;
+ lbImg.src=imgs[index].src;
+ lbCap.innerText=imgs[index].alt;
+}
 
-      <div class="card">
-        <img src="photo4.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	   <div class="card">
-        <img src="photo5.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo6.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo7.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo8.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo9.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo10.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo11.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo12.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo13.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo14.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo15.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo16.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo17.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo18.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo19.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo20.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo21.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo22.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo23.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo24.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo25.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo26.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo27.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo28.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo29.jpg" alt="अंगणवाडी केंद्र">
-      </div>
-	  <div class="card">
-        <img src="photo30.jpg" alt="अंगणवाडी केंद्र">
-      </div>
+document.querySelector(".next").onclick=()=>show(index+1);
+document.querySelector(".prev").onclick=()=>show(index-1);
 
-    </div>
-    <!-- ===== Gallery End ===== -->
+document.querySelector(".close").onclick=()=>{
+ lb.style.display="none";
+ nav.style.display="flex";
+};
 
-  </div>
+document.addEventListener("keydown",e=>{
+ if(lb.style.display=="block"){
+  if(e.key=="Escape") lb.style.display="none",nav.style.display="flex";
+  if(e.key=="ArrowRight") show(index+1);
+  if(e.key=="ArrowLeft") show(index-1);
+ }
+});
+
+/* Swipe */
+let startX=0;
+lb.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
+lb.addEventListener("touchend",e=>{
+ let endX=e.changedTouches[0].clientX;
+ if(startX-endX>50) show(index+1);
+ if(endX-startX>50) show(index-1);
+});
+</script>
 
 </body>
 </html>
